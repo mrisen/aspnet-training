@@ -14,7 +14,32 @@ public class Program
 	public static int[] Filter(int[] source)
 	{
 		// ИЗМЕНИТЕ КОД ЭТОГО МЕТОДА
-		return Array.Empty<int>();
+		if (source == null)
+			throw new ArgumentNullException();
+		else
+		{
+			bool a;
+			//int current;
+			for(int j = 0; j < source.Length; j++)
+			{
+				a = false;
+				//current = source[j];
+				for (int i = j + 1; i < source.Length - 1; i++)
+				{
+					if(source[j] == source[i])
+					{
+						Array.Clear(source, source[i], 0);
+						a = true;
+					}	
+				}
+					if(a == true)
+					{
+						Array.Clear(source, source[j], 0);
+					}
+			
+			}
+			return source;
+		}
 	}
 
 	// ДОБАВЬТЕ НОВЫЕ МЕТОДЫ, ЕСЛИ НЕОБХОДИМО
