@@ -11,7 +11,23 @@ public class Program
     public static string[] SortStringArray(string[] array)
     {
 		// ИЗМЕНИТЕ КОД ЭТОГО МЕТОДА.
-        return Array.Empty<string>();
+        if (array == null)
+			throw new ArgumentNullException();
+		else
+		{
+			string s;
+			for(int j = 0; j < array.Length; j++)
+			for (int i = 0; i < array.Length-1; i++)
+			{
+				if(array[i].Length > array[i+1].Length)
+				{
+					s = array[i];
+					array[i] = array[i+1];
+					array[i+1] = s;
+				}
+			}
+			return array;
+		}
     }
 
     // ----- ЗАПРЕЩЕНО ИЗМЕНЯТЬ КОД МЕТОДОВ, КОТОРЫЕ НАХОДЯТСЯ НИЖЕ -----
