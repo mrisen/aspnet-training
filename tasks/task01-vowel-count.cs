@@ -10,7 +10,18 @@ public class Program
 	public static int CountVowels(string s)
 	{
 		// ИЗМЕНИТЕ КОД ЭТОГО МЕТОДА
-		return -1;
+		if (s == null)
+			throw new ArgumentNullException();
+		else 
+		{
+			int count = 0;
+			for (int i = 0; i < s.Length; i++)
+			{
+				if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u')
+					count++;
+			}
+			return count;	
+		}
 	}
 
 	// ----- ЗАПРЕЩЕНО ИЗМЕНЯТЬ КОД МЕТОДОВ, КОТОРЫЕ НАХОДЯТСЯ НИЖЕ -----
