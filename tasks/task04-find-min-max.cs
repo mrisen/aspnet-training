@@ -12,9 +12,34 @@ public class Program
 	{
 		min = int.MinValue;
 		max = int.MaxValue;
-
 		// ИЗМЕНИТЕ КОД ЭТОГО МЕТОДА
-		return false;
+		if (array == null)
+		{
+			throw new ArgumentException();
+		}
+		else
+		{
+			min = array[0][0];
+			max = array[0][0];
+			for(int i = 0; i < array.Length; i++)
+				for(int j = 0; j < array[i].Length; j++)
+				{
+					if(array[i][j] == null)
+						continue;
+					if(min > array[i][j])
+						min = array[i][j];
+				}
+			
+			for(int i = 0; i < array.Length; i++)
+				for(int j = 0; j < array[i].Length; j++)
+				{
+					if(array[i][j] == null)
+						continue;
+					if(max < array[i][j])
+						max = array[i][j];
+				}
+				return true;
+		}
 	}
 
 	// ДОБАВЬТЕ НОВЫЕ МЕТОДЫ, ЕСЛИ НЕОБХОДИМО
