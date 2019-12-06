@@ -17,7 +17,7 @@ public class Program
                 throw new ArgumentNullException();
             else
             {
-				Remove(ref source);
+		Remove(ref source);
                 return source;
             }
 	}
@@ -43,7 +43,7 @@ public class Program
                     mas.RemoveAt(j);
                     j--;
                 }
-          }
+            }
 		source = mas.ToArray();
 	}
 
