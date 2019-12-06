@@ -13,33 +13,38 @@ public class Program
 {
 	public static int[] Filter(int[] source)
 	{
-		// ИЗМЕНИТЕ КОД ЭТОГО МЕТОДА
-		if (source == null)
-			throw new ArgumentNullException();
-		else
-		{
-			bool a;
-			//int current;
-			for(int j = 0; j < source.Length; j++)
-			{
-				a = false;
-				//current = source[j];
-				for (int i = j + 1; i < source.Length - 1; i++)
-				{
-					if(source[j] == source[i])
-					{
-						Array.Clear(source, source[i], 0);
-						a = true;
-					}	
-				}
-					if(a == true)
-					{
-						Array.Clear(source, source[j], 0);
-					}
-			
-			}
-			return source;
-		}
+            if (source == null)
+                throw new ArgumentNullException();
+            else
+            {
+				Remove(ref source);
+                return source;
+            }
+	}
+	
+	public static void Remove(ref int[] source)
+        {
+            List<int> mas = new List<int>(source);
+            bool a;
+            for (int j = 0; j < mas.Count - 1; j++)
+            {
+                a = false;
+                for (int i = j + 1; i < mas.Count; i++)
+                {
+                    if (mas[j] == mas[i])
+                    {
+                        mas.RemoveAt(i);
+                        i--;
+                        a = true;
+                    }
+                }
+                if (a == true)
+                {
+                    mas.RemoveAt(j);
+                    j--;
+                }
+          }
+		source = mas.ToArray();
 	}
 
 	// ДОБАВЬТЕ НОВЫЕ МЕТОДЫ, ЕСЛИ НЕОБХОДИМО
