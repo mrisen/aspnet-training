@@ -12,8 +12,35 @@ public class Program
 {
 	public static int[] GetPrimeNumbers(int start, int end)
 	{
-		// ИЗМЕНИТЕ КОД ЭТОГО МЕТОДА.
-		return Array.Empty<int>();
+		if(start == 0 || end == 0 
+		   || start > end 
+		   || start < 0 || end < 0 
+		   || start == 1 || end == 1)
+			throw new ArgumentNullException();
+		else
+		{
+			bool prost;
+			List<int> array = new List<int>();
+			for(int number = start; number <= end; number++)
+			{
+				prost = true;
+				for(int i = 2; i <= number/2; i++)
+				{
+					if(number % i == 0)
+					{
+						prost = false;
+						break;
+					}
+				}
+				if(prost)
+				{
+					array.Add(number);
+				}
+			}
+			int [] mas = new int [array.Count];
+			mas = array.ToArray();
+			return mas;
+		}
 	}
 	
 	// ДОБАВЬТЕ НОВЫЕ МЕТОДЫ, ЕСЛИ НЕОБХОДИМО
