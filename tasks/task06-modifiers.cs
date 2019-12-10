@@ -12,30 +12,30 @@ using System.Linq;
 
 // ----- ДОБАВИТЬ МОДИФИКАТОРЫ И МОДИФИКАТОРЫ ДОСТУПА -----
 
-class BaseClass
+public abstract class BaseClass
 {
-	string GetCode() { return "CODE-1"; }
-	string GetDescription() { return this.GetDefaultDescription() + this.GetClassSymbol(); }
-	string GetDefaultDescription() { return "CLASS-"; }
-	string GetClassSymbol();
+	public string GetCode() { return "CODE-1"; }
+	internal string GetDescription() { return this.GetDefaultDescription() + this.GetClassSymbol(); }
+	internal virtual string GetDefaultDescription() { return "CLASS-"; }
+	internal abstract string GetClassSymbol();
 }
 
-class DerivedClassA : BaseClass
+internal class DerivedClassA : BaseClass
 {
-	string GetCode() { return this.GetCurrentCode(); }
+	internal new string GetCode() { return this.GetCurrentCode(); }
 	string GetCurrentCode() { return "CODE-2"; }
-	string GetClassSymbol() { return "A"; }
+	internal override string GetClassSymbol() { return "A"; }
 }
 
 class DerivedClassB : DerivedClassA
 {
-	class DerivedClassImpl
+    class DerivedClassImpl
 	{
-		string GetCode() { return "CODE-3"; }
+		public static string GetCode() { return "CODE-3"; }
 	}
-	string GetCode() { return DerivedClassImpl.GetCode(); }
-	string GetDefaultDescription() { return string.Empty; }
-	string GetClassSymbol() { return "B"; }
+	internal new string GetCode() { return DerivedClassImpl.GetCode(); }
+	internal override string GetDefaultDescription() { return string.Empty; }
+	internal override string GetClassSymbol() { return "B"; }
 }
 
 // ----- ЗАПРЕЩЕНО ИЗМЕНЯТЬ КОД В КЛАССЕ PROGRAM -----
